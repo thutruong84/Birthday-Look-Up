@@ -56,32 +56,58 @@ def searchName(name,nameList):
 
 
 
-# display menu option and get user input
+# create a menu function to display menu option and get user input
 
-#print("---Enter a number to select search option or 'q' to quit---")
-#print("[1] Search by full name")
-#print("[2] Search by last name")
-#print("[3] Search by first name")
-#print("[q] Quit this program")
+def menu():
+    print("---Enter a letter to select search option or 'q' to quit---")
+    print("[a] Search by full name")
+    print("[b] Search by last name")
+    print("[c] Search by first name")
+    print("[q] Quit this program")
+    option = input("Choose an option:")
+    return option
+    
+# create a while loop that will quit the program if user enters "q"
 
-#opt = input("Choose an option:")
+choice = menu()
 
-# create loop and if-else statment
-#while (opt != "q"):
+while (choice != "q"):
+
+    # get user's input for the name
+    name = input("Enter a name:")
+
+    # process name to capitalize first letter of full name, first name, or last name
+    if " " in name:
+        first = name.split(" ")[0]
+        last = name.split(" ")[1]
+        name = first.capitalize() + " " + last.capitalize()
+    else:
+        name = name.capitalize()
+
+    if choice == "a":
+        searchName(name, fullName)
+        choice = menu()
+        
+    elif choice == "b":
+        searchName(name,lastName)
+        choice = menu()
+        
+    elif choice == "c":
+        searchName(name,firstName)
+        choice = menu()
+        
+    else:
+        print("Your choice is not valid")
+
+        
 
 
 
 
 
-name = input("Enter a name:")
 
-# process name to capitalize first letter of full name, first name, or last name
-if " " in name:
-    first = name.split(" ")[0]
-    last = name.split(" ")[1]
-    name = first.capitalize() + " " + last.capitalize()
-else:
-    name = name.capitalize()
+
+
 
 
 
